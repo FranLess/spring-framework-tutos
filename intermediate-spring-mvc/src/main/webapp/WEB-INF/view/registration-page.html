@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{template/layout :: layout(~{::title}, ~{::section})}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>Register here</h1>
+      <form action="register" method="get" th:object="${user}">
+        <label for="name">Name</label>
+        <input id="name" th:field="*{name}" />
+        <div
+          th:if="${#fields.hasErrors('name')}"
+          th:insert="~{template/error-alert::alert('there is an error in name')}"
+        ></div>
+        <br />
+        <label for="userName">User name</label>
+        <input id="userName" th:field="*{userName}" />
+        <div
+          th:if="${#fields.hasErrors('userName')}"
+          th:insert="~{template/error-alert::alert('There is an error in the user name!')}"
+        ></div>
+        <br />
+        <label for="password">Password</label>
+        <input id="password" th:field="*{password}" />
+        <br />
+        <label for="country">Country</label>
+        <select th:field="*{country}">
+          <option value="USA">United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="MX">México</option>
+          <option value="ES">España</option>
+        </select>
+        <label for="">Hobbies: </label>
+        <input
+          type="checkbox"
+          th:field="*{hobbies}"
+          value="videogames"
+        />Videogames
+        <input type="checkbox" th:field="*{hobbies}" value="drawing" />Drawing
+        <input type="checkbox" th:field="*{hobbies}" value="movies" /> Watch
+        movies
+        <input type="checkbox" th:field="*{hobbies}" value="reading" />
+        Reading
+        <br />
+        <label for="">Gender: </label>
+        <input type="radio" th:field="*{gender}" value="male" /> Male
+        <input type="radio" th:field="*{gender}" value="female" /> Female
+        <br />
+        <h4>Contact info</h4>
+        <label for="email">Email</label>
+        <input type="text" th:field="*{contact.email}" id="email" />
+        <div
+          th:if="${#fields.hasErrors('contact.email')}"
+          th:insert="~{template/error-alert::alert(${#fields.errors('contact.email')})}"
+        ></div>
+        <br />
+        <label for="phone">Phone</label>
+        <input type="text" th:field="*{contact.phone}" id="phone" />
+        <div
+          th:if="${#fields.hasErrors('contact.phone')}"
+          th:insert="~{template/error-alert::alert(${#fields.errors('contact.phone')})}"
+        ></div>
+        <br />
+        <input type="submit" value="Register" />
+      </form>
+    </section>
+  </body>
+</html>

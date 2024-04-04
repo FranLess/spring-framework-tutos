@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{template/layout :: layout(~{::title}, ~{::section})}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<div>
+  <section>
+    <h1>Register successful!!!</h1>
+    <!-- Example: Using Thymeleaf expressions to display a variable -->
+    <p>Page Title: <span th:text="${pageTitle}"></span></p>
+    <br />
+    <h4>User:</h4>
+    <span th:text="${user.name}"></span>
+    <br />
+    <h4>User name:</h4>
+    <span th:text="${user.userName}"></span>
+    <br />
+    <h4>Country:</h4>
+    <span th:text="${user.country}"></span>
+    <br />
+    <h4>Password:</h4>
+    <span th:text="${user.password}"></span>
+    <br />
+    <h4>Hobbies:</h4>
+    <span th:text="${user.hobbies}"></span>
+    <br />
+
+    <!-- Example: Iterating over a list (replace with your own data) -->
+    <div th:each="hobbie : ${user.hobbies}">
+      <p th:text="${hobbie}"></p>
+    </div>
+
+    <br />
+    <h4>Email:</h4>
+    <span th:text="${user.contact.email}"></span>
+    <br />
+
+    <br />
+    <h4>Phone number:</h4>
+    <span th:text="${user.contact.phone}"></span>
+    <br />
+
+    <!-- Add more Thymeleaf expressions and your custom content here -->
+  </section>
+</div>

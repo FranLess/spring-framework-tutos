@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Spring Thyme Seed Starter Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <div>
+      <h1>This is your book submition</h1>
+    </div>
+    <hr />
+    <div>
+      <h2 th:text="${book.title}">Title</h2>
+      <h2 th:text="${book.description}">Description</h2>
+      <h2 th:text="${book.author}">Author</h2>
+    </div>
+  </body>
+</html>

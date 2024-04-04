@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{template/layout :: layout(~{::title}, ~{::section})}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>Register here</h1>
+      <form
+        th:action="@{/session/annotated/success}"
+        method="get"
+        th:object="${user}"
+      >
+        <label for="name">Name</label>
+        <input id="name" th:field="*{name}" />
+        <div
+          th:if="${#fields.hasErrors('name')}"
+          th:insert="~{template/error-alert::alert('there is an error in name')}"
+        ></div>
+        <br />
+        <label for="crushName">Crush Name</label>
+        <input id="crushName" th:field="*{crushName}" />
+        <div
+          th:if="${#fields.hasErrors('crushName')}"
+          th:insert="~{template/error-alert::alert('There is an error in the user name!')}"
+        ></div>
+        <br />
+        <input type="submit" value="Register" />
+      </form>
+    </section>
+  </body>
+</html>
